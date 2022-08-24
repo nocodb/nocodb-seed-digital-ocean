@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# create the nocodb directory
+echo "==> Creating nocodb directory"
+mkdir -p /etc/nocodb
+
+# download docker-compose.yaml
+echo "==> Downloading docker-compose file"
+wget -nc -O /etc/nocodb/docker-compose.yaml https://raw.githubusercontent.com/nocodb/nocodb/develop/docker-compose/pg/docker-compose.yml
+
+# start the containers
+echo "==> Starting the containers"
+docker-compose -f /etc/nocodb/docker-compose.yaml up -d
